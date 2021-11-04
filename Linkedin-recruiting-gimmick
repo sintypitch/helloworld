@@ -1,0 +1,43 @@
+def is_ideal_candidate (name, surname,remote,salary):
+    #name   : Fill in First Name of the applicant
+    #surname: Fill in the Last Name of the applicant
+    #remote : Fill in Remote, Hybrid, Office
+    #salary : Fill in the bruto salary that you offer
+    
+    median_belgian_income = 3486
+    minium_belgian_wage = 1684
+
+   
+   #Function that checks if salary is higher than minimum wage
+    if salary < minium_belgian_wage:
+        return ("This gross salary is below the Belgian minimum wage.")
+    if remote.lower() == "office":
+        return ("This seems like an error... Have you tried 'Remote'?")
+    else:                
+        #Function that checks if the candidate's name is valid
+        if name.lower() != "anthony" and surname.lower() != "hoebeeck":
+            return ("Mhhh... I don't know about " + name.title() + "... Have you considered hiring someone else? Try a different candidate, like... 'Anthony Hoebeeck'")    
+        else: 
+            print ("Sounds like an excellent hire. Contact Anthony Hoebeeck on LinkedIn with your proposal!")
+            print ("")
+            print ("")
+            print ("For the gross monthly salary of " + str(salary) + " euro, these will be the following annual costs: ")
+            
+       #Function that calculates the annual salary costs
+            annual_salary = salary * 13                 #salary + '13th month' 
+            employer_costs1 = annual_salary * 0.25      #25% employer RSZ cost
+            Recruiter_bonus = annual_salary * 0.25      #cost of the recruitment
+            print ("- The total annual salary (including 13th month) is " + str(annual_salary) + " euro;")
+            print ("- The total cost for the employer is " + str(employer_costs1 + annual_salary) + " euro;")
+            print ("- The total recruitment cost is " + str(Recruiter_bonus) + " euro.")
+            print ("")
+            
+        #Function that calculates how much the salary is below median income
+        if salary < median_belgian_income:
+            less_than_median = median_belgian_income - salary
+            return ("!!! This salary is " + str(less_than_median) + " euro less than the median Belgian salary.")
+        else: 
+            return ("")  
+
+ 
+print (is_ideal_candidate("anthony","hoebeeck","Remote", 3500))
